@@ -97,3 +97,13 @@
 
 // ___________________________ SOLID PRINCIPLES _____________________________
 
+// LSP 
+// using DesignPatternsTutorial.src.SOLID.L;
+
+// // if you replace superclass (Rectangle) with subclass (Square) and re run the program
+// // the calculated area will be different. This violates the Liskov Substitution Principle.
+// // Instead, the Square class should inherit from a Shape class and implement the Area property.
+// var rect = new Rectangle();
+// rect.Width = 10;
+// rect.Height = 5;
+// Console.WriteLine(rect.Area);

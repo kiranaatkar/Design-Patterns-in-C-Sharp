@@ -5,15 +5,8 @@ namespace DesignPatternsTutorial.src.SOLID.S
         public string Username { get; set; }
         public string Email { get; set; }
 
-        public void Register() 
-        {
-            // Register user logic
-
-            // send email
-            EmailSender emailSender = new EmailSender();
-            emailSender.SendEmail(Email, "Welcome to our platform");
-            
-        }
+        // Used to contain Register method but that would give this more than one responsibility
+        // this is now used for just storing user data, the service is used for handling user functions.
     }
 }
 
