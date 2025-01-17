@@ -107,3 +107,24 @@
 // rect.Width = 10;
 // rect.Height = 5;
 // Console.WriteLine(rect.Area);
+
+
+
+
+// ___________________________ DESIGN PATTERNS _____________________________
+
+// MOMENTO
+// using DesignPatternsTutorial.src.DesignPatterns.Behavioural.Momento;
+// var editor = new Editor();
+// var history = new History(editor);
+// history.BackUp();
+// editor.Title = "Title 1";
+// history.BackUp();
+// editor.Content = "Content 1";
+// history.BackUp();
+// editor.Title = "Title 2";
+// history.ShowHistory();
+// Console.WriteLine("Current state: " + editor.Title + " " + editor.Content);
+// history.Undo();
+// Console.WriteLine("After 1 undo: " + editor.Title + " " + editor.Content);
+// history.ShowHistory();
