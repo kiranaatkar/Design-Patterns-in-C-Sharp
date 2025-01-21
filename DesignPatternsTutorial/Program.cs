@@ -131,10 +131,38 @@
 
 
 // STRATEGY
-using DesignPatternsTutorial.src.DesignPatterns.Behavioural.Strategy.GoodSolution;
-var videoEditor = new VideoStorage(new CompressorMp4(), new OverlayNone());
-videoEditor.Store("video1");
+// using DesignPatternsTutorial.src.DesignPatterns.Behavioural.Strategy.GoodSolution;
+// var videoEditor = new VideoStorage(new CompressorMp4(), new OverlayNone());
+// videoEditor.Store("video1");
 
-videoEditor.SetCompressor(new CompressorMOV());
-videoEditor.SetOverlay(new OverlayBlur());
-videoEditor.Store("video2");
+// videoEditor.SetCompressor(new CompressorMOV());
+// videoEditor.SetOverlay(new OverlayBlur());
+// videoEditor.Store("video2");
+
+// ITERATOR
+// BAD solution - If list changes from List<string> to string[50] then this breaks
+// as .Count is not available on string[50]
+// using DesignPatternsTutorial.src.DesignPatterns.Behavioural.Iterator;
+// ShoppingList shoppingList = new ShoppingList();
+// shoppingList.Push("Apple");
+// shoppingList.Push("Banana");
+// shoppingList.Push("Orange");
+
+// for (int i = 0; i < shoppingList.GetList().Count; i++)
+// {
+//     Console.WriteLine(shoppingList.GetList()[i]);
+// }
+
+// GOOD solution - If list changes from List<string> to string[50] then this still works
+using DesignPatternsTutorial.src.DesignPatterns.Behavioural.Iterator.GoodSolution;
+ShoppingList shoppingList = new ShoppingList();
+shoppingList.Push("Apple");
+shoppingList.Push("Banana");
+shoppingList.Push("Orange");
+
+var iterator = shoppingList.CreateIterator();
+while (iterator.HasNext())
+{
+    Console.WriteLine(iterator.Current());
+    iterator.Next();
+}
