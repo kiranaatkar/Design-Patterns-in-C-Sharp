@@ -154,15 +154,49 @@
 // }
 
 // GOOD solution - If list changes from List<string> to string[50] then this still works
-using DesignPatternsTutorial.src.DesignPatterns.Behavioural.Iterator.GoodSolution;
-ShoppingList shoppingList = new ShoppingList();
-shoppingList.Push("Apple");
-shoppingList.Push("Banana");
-shoppingList.Push("Orange");
+// using DesignPatternsTutorial.src.DesignPatterns.Behavioural.Iterator.GoodSolution;
+// ShoppingList shoppingList = new ShoppingList();
+// shoppingList.Push("Apple");
+// shoppingList.Push("Banana");
+// shoppingList.Push("Orange");
 
-var iterator = shoppingList.CreateIterator();
-while (iterator.HasNext())
-{
-    Console.WriteLine(iterator.Current());
-    iterator.Next();
-}
+// var iterator = shoppingList.CreateIterator();
+// while (iterator.HasNext())
+// {
+//     Console.WriteLine(iterator.Current());
+//     iterator.Next();
+// } 
+
+
+// COMMAND PATTERN
+// BAD SOLUTION - directly calling methods on light class from remote class - tightly coupled, 
+//  violating the open/closed principle.
+// using DesignPatternsTutorial.src.DesignPatterns.Behavioural.Command;
+// var light = new Light();
+// var remote = new RemoteControl(light);
+
+// remote.PressButton(true);
+// remote.PressButton(false);
+
+// GOOD SOLUTION - using command pattern
+// using DesignPatternsTutorial.src.DesignPatterns.Behavioural.Command.GoodSolution;
+// var light = new Light();
+// var remote = new RemoteControl(new TurnOnCommand(light));
+// remote.PressButton();
+// remote.SetCommand(new DimCommand(light));
+// remote.PressButton();
+
+// UNDO for COmmand pattern
+using DesignPatternsTutorial.src.DesignPatterns.Behavioural.Command.Undoable;
+var htmlDoc = new HtmlDocument();
+var history = new CommandHistory();
+htmlDoc.Content = "Hello World";
+Console.WriteLine(htmlDoc.Content);
+
+var italicCommand = new ItalicCommand(htmlDoc, history);
+italicCommand.Execute();
+Console.WriteLine(htmlDoc.Content);
+
+var undoCommand = new UndoCommand(history);
+undoCommand.Execute();
+Console.WriteLine(htmlDoc.Content);
