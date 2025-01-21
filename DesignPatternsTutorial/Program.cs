@@ -128,3 +128,13 @@
 // history.Undo();
 // Console.WriteLine("After 1 undo: " + editor.Title + " " + editor.Content);
 // history.ShowHistory();
+
+
+// STRATEGY
+using DesignPatternsTutorial.src.DesignPatterns.Behavioural.Strategy.GoodSolution;
+var videoEditor = new VideoStorage(new CompressorMp4(), new OverlayNone());
+videoEditor.Store("video1");
+
+videoEditor.SetCompressor(new CompressorMOV());
+videoEditor.SetOverlay(new OverlayBlur());
+videoEditor.Store("video2");
