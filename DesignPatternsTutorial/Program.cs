@@ -187,16 +187,35 @@
 // remote.PressButton();
 
 // UNDO for COmmand pattern
-using DesignPatternsTutorial.src.DesignPatterns.Behavioural.Command.Undoable;
-var htmlDoc = new HtmlDocument();
-var history = new CommandHistory();
-htmlDoc.Content = "Hello World";
-Console.WriteLine(htmlDoc.Content);
+// using DesignPatternsTutorial.src.DesignPatterns.Behavioural.Command.Undoable;
+// var htmlDoc = new HtmlDocument();
+// var history = new CommandHistory();
+// htmlDoc.Content = "Hello World";
+// Console.WriteLine(htmlDoc.Content);
 
-var italicCommand = new ItalicCommand(htmlDoc, history);
-italicCommand.Execute();
-Console.WriteLine(htmlDoc.Content);
+// var italicCommand = new ItalicCommand(htmlDoc, history);
+// italicCommand.Execute();
+// Console.WriteLine(htmlDoc.Content);
 
-var undoCommand = new UndoCommand(history);
-undoCommand.Execute();
-Console.WriteLine(htmlDoc.Content);
+// var undoCommand = new UndoCommand(history);
+// undoCommand.Execute();
+// Console.WriteLine(htmlDoc.Content);
+
+
+
+
+// TEMPLATE PATTERN
+// BAD EXAMPLE
+// using DesignPatternsTutorial.src.DesignPatterns.Behavioural.Template.BadExample;
+// var coffee = new Tea();
+// coffee.MakeBeverage();
+// Using strategy pattern
+// using DesignPatternsTutorial.src.DesignPatterns.Behavioural.Template.StrategyPattern;
+// var coffee = new BeverageMaker(new Coffee());
+// coffee.MakeBeverage();
+// using temoplate method
+// using DesignPatternsTutorial.src.DesignPatterns.Behavioural.Template.TemplateMethod;
+// var tea = new Tea();
+// tea.Prepare();
+// var chamomile = new Chamomile();
+// chamomile.Prepare();
