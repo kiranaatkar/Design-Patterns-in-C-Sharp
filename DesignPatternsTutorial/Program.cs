@@ -255,6 +255,27 @@
 // var dialogBox = new PostsDialogBox();
 // dialogBox.SimulateUserInteraction();
 
-using DesignPatternsTutorial.src.DesignPatterns.Behavioural.MediatorWithObserver;
-var dialogBox = new PostsDialogBox();
-dialogBox.SimulateUserInteraction();
+// using DesignPatternsTutorial.src.DesignPatterns.Behavioural.MediatorWithObserver;
+// var dialogBox = new PostsDialogBox();
+// dialogBox.SimulateUserInteraction();
+
+
+
+
+
+// CHAIN OF RESPONSIBILITY PATTERN
+// BAD
+// using DesignPatternsTutorial.src.DesignPatterns.Behavioural.ChainOfResponsibility;
+// var webServer = new WebServer();
+// webServer.Handle(new HttpRequest("admin", "1234"));
+
+// GOOD
+using DesignPatternsTutorial.src.DesignPatterns.Behavioural.ChainOfResponsibility.GoodSolution;
+var validator = new Validator();
+var authenticator = new Authenticator();
+var logger = new Logger();
+
+validator.SetNext(authenticator).SetNext(logger);
+
+var webServer = new WebServer(validator);
+webServer.Handle(new HttpRequest("kit", "123"));
