@@ -237,12 +237,24 @@
 // dataSource.RemoveDependant(spreadsheet);
 // dataSource.SetValues(new List<int> {4, 5, 6});
 // GOOD
-using DesignPatternsTutorial.src.DesignPatterns.Behavioural.Observer.GoodSolution;
-var dataSource  = new DataSource();
-var spreadsheet = new Spreadsheet2(dataSource);
-var barChart = new BarChart(dataSource);
-dataSource.AddObserver(spreadsheet);
-dataSource.AddObserver(barChart);
-dataSource.SetValues(new List<int> {1, 2, 3});
-dataSource.RemoveObserver(barChart);
-dataSource.SetValues(new List<int> {4, 5, 6});
+// using DesignPatternsTutorial.src.DesignPatterns.Behavioural.Observer.GoodSolution;
+// var dataSource  = new DataSource();
+// var spreadsheet = new Spreadsheet2(dataSource);
+// var barChart = new BarChart(dataSource);
+// dataSource.AddObserver(spreadsheet);
+// dataSource.AddObserver(barChart);
+// dataSource.SetValues(new List<int> {1, 2, 3});
+// dataSource.RemoveObserver(barChart);
+// dataSource.SetValues(new List<int> {4, 5, 6});
+
+
+
+
+// MEDIATOR PATTERN 
+// using DesignPatternsTutorial.src.DesignPatterns.Behavioural.Mediator;
+// var dialogBox = new PostsDialogBox();
+// dialogBox.SimulateUserInteraction();
+
+using DesignPatternsTutorial.src.DesignPatterns.Behavioural.MediatorWithObserver;
+var dialogBox = new PostsDialogBox();
+dialogBox.SimulateUserInteraction();
