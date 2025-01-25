@@ -270,12 +270,51 @@
 // webServer.Handle(new HttpRequest("admin", "1234"));
 
 // GOOD
-using DesignPatternsTutorial.src.DesignPatterns.Behavioural.ChainOfResponsibility.GoodSolution;
-var validator = new Validator();
-var authenticator = new Authenticator();
-var logger = new Logger();
+// using DesignPatternsTutorial.src.DesignPatterns.Behavioural.ChainOfResponsibility.GoodSolution;
+// var validator = new Validator();
+// var authenticator = new Authenticator();
+// var logger = new Logger();
 
-validator.SetNext(authenticator).SetNext(logger);
+// validator.SetNext(authenticator).SetNext(logger);
 
-var webServer = new WebServer(validator);
-webServer.Handle(new HttpRequest("kit", "123"));
+// var webServer = new WebServer(validator);
+// webServer.Handle(new HttpRequest("kit", "123"));
+
+
+
+
+
+
+
+
+
+// VISITOR PATTERN
+// BAD
+// This violates the SRP as clients are responsible for sending emails and storing information 
+// using DesignPatternsTutorial.src.DesignPatterns.Behavioural.Visitor;
+// var clients = new List<Client>
+// {
+//     new LawClient("Law Client", "email.co.uk"),
+//     new RetailClient("Retail Client", "email.co.uk"),
+//     new RestaurantClient("Restaurant Client", "email.co.uk")
+// };
+// foreach(var client in clients)
+// {
+//     client.SendEmail();
+// } 
+// GOOD
+// Now, if we want new features for each client we just need a new visitor, instead of having to 
+// modify the client classes.
+using DesignPatternsTutorial.src.DesignPatterns.Behavioural.Visitor.GoodSolution;
+var clients = new List<Client>
+{
+    new LawClient("Law Client", "email.co.uk"),
+    new RetailClient("Retail Client", "email.co.uk"),
+    new RestaurantClient("Restaurant Client", "email.co.uk")
+};
+
+foreach(var client in clients)
+{
+    client.Accept(new EmailVisitor());
+    client.Accept(new PdfExportVisitor());
+}
