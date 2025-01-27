@@ -305,16 +305,30 @@
 // GOOD
 // Now, if we want new features for each client we just need a new visitor, instead of having to 
 // modify the client classes.
-using DesignPatternsTutorial.src.DesignPatterns.Behavioural.Visitor.GoodSolution;
-var clients = new List<Client>
-{
-    new LawClient("Law Client", "email.co.uk"),
-    new RetailClient("Retail Client", "email.co.uk"),
-    new RestaurantClient("Restaurant Client", "email.co.uk")
-};
+// using DesignPatternsTutorial.src.DesignPatterns.Behavioural.Visitor.GoodSolution;
+// var clients = new List<Client>
+// {
+//     new LawClient("Law Client", "email.co.uk"),
+//     new RetailClient("Retail Client", "email.co.uk"),
+//     new RestaurantClient("Restaurant Client", "email.co.uk")
+// };
 
-foreach(var client in clients)
-{
-    client.Accept(new EmailVisitor());
-    client.Accept(new PdfExportVisitor());
-}
+// foreach(var client in clients)
+// {
+//     client.Accept(new EmailVisitor());
+//     client.Accept(new PdfExportVisitor());
+// }
+
+
+
+
+
+
+
+
+
+// Interpreter pattern
+using DesignPatternsTutorial.src.DesignPatterns.Behavioural.Interpreter;
+var context = new Context();
+var interpreter = new Interpreter(context);
+Console.WriteLine(interpreter.Interpret("1+2*3"));
