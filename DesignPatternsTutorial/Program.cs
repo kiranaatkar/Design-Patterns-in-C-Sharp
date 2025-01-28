@@ -357,10 +357,36 @@
 
 
 // ADAPTER PATTERN
-using DesignPatternsTutorial.src.DesignPatterns.Structural.Adapter;
-using DesignPatternsTutorial.src.DesignPatterns.Structural.Adapter.Package;
-var video = new Video();
-var rainbow = new Rainbow();
-var rainbowColor = new RainbowColor(rainbow);
-var videoEditor = new VideoEditor(video);
-videoEditor.ApplyColor(rainbowColor);
+// using DesignPatternsTutorial.src.DesignPatterns.Structural.Adapter;
+// using DesignPatternsTutorial.src.DesignPatterns.Structural.Adapter.Package;
+// var video = new Video();
+// var rainbow = new Rainbow();
+// var rainbowColor = new RainbowColor(rainbow);
+// var videoEditor = new VideoEditor(video);
+// videoEditor.ApplyColor(rainbowColor);
+
+
+
+// BRIDGE PATTERN
+// BAD
+// eery time we add a new brand, we need to create 3 new classes, every time we need a new remote type
+// we need to implement it for each brand, so it grows in two dimensions, to simplify, use the bridge pattern
+// to split it into brand and type hierarchys
+// using DesignPatternsTutorial.src.DesignPatterns.Structural.Bridge;
+// var lgRemote = new AdvancedLGRemote();
+// lgRemote.SetChannel(5);
+// lgRemote.TurnOn();
+// lgRemote.VolumeUp();
+// lgRemote.VolumeDown();
+// lgRemote.TurnOff();
+
+// GOOD
+using DesignPatternsTutorial.src.DesignPatterns.Structural.Bridge.Good;
+var lgRemote = new RemoteControl(new LgRadio());
+lgRemote.TurnOn();
+lgRemote.TurnOff();
+
+var sonyRemote = new AdvancedRemote(new SonyRadio());
+sonyRemote.TurnOn();
+sonyRemote.TurnOff();
+sonyRemote.SetChannel(5);
