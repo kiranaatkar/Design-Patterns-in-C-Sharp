@@ -381,12 +381,45 @@
 // lgRemote.TurnOff();
 
 // GOOD
-using DesignPatternsTutorial.src.DesignPatterns.Structural.Bridge.Good;
-var lgRemote = new RemoteControl(new LgRadio());
-lgRemote.TurnOn();
-lgRemote.TurnOff();
+// using DesignPatternsTutorial.src.DesignPatterns.Structural.Bridge.Good;
+// var lgRemote = new RemoteControl(new LgRadio());
+// lgRemote.TurnOn();
+// lgRemote.TurnOff();
 
-var sonyRemote = new AdvancedRemote(new SonyRadio());
-sonyRemote.TurnOn();
-sonyRemote.TurnOff();
-sonyRemote.SetChannel(5);
+// var sonyRemote = new AdvancedRemote(new SonyRadio());
+// sonyRemote.TurnOn();
+// sonyRemote.TurnOff();
+// sonyRemote.SetChannel(5);
+
+
+
+
+
+
+
+
+// PROXY PATTERN
+// BAD
+// has to download everything even thoughwe only want to watch '1'
+// using DesignPatternsTutorial.src.DesignPatterns.Structural.Proxy.Bad.Package;
+// using DesignPatternsTutorial.src.DesignPatterns.Structural.Proxy.Bad;
+// var videoList = new VideoList();
+// string[] videoIds = new string[] {"1", "2"};
+
+// foreach(var videoId in videoIds)
+// {
+//     videoList.AddVideo(new YoutubeVideo(videoId));
+// }
+
+// videoList.Watch("1");
+
+// GOOD
+// now, only the video we want to watch is downloaded
+using DesignPatternsTutorial.src.DesignPatterns.Structural.Proxy.Good;
+var videoList = new VideoList();
+string[] videoIds = new string[] {"1", "2"};
+foreach(var videoId in videoIds)
+{
+    videoList.AddVideo(new YoutubeVideoProxy(videoId));
+}
+videoList.Watch("1");
