@@ -328,7 +328,26 @@
 
 
 // Interpreter pattern
-using DesignPatternsTutorial.src.DesignPatterns.Behavioural.Interpreter;
-var context = new Context();
-var interpreter = new Interpreter(context);
-Console.WriteLine(interpreter.Interpret("1+2*3"));
+// using DesignPatternsTutorial.src.DesignPatterns.Behavioural.Interpreter;
+// var context = new Context();
+// var interpreter = new Interpreter(context);
+// Console.WriteLine(interpreter.Interpret("1+2*3"));
+
+
+
+
+
+// STRUCTURAL PATTERNS
+
+// COMPOSITE PATTERN
+using DesignPatternsTutorial.src.DesignPatterns.Structural.Composite;
+var box = new Box();
+box.Add(new Microphone());
+box.Add(new Mouse());
+Console.WriteLine(box.GetPrice());
+
+var box2 = new Box();
+box2.Add(new Microphone());
+box2.Add(new Mouse());
+box2.Add(box);
+Console.WriteLine(box2.GetPrice());
