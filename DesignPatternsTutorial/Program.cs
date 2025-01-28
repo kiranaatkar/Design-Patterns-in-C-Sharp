@@ -340,14 +340,27 @@
 // STRUCTURAL PATTERNS
 
 // COMPOSITE PATTERN
-using DesignPatternsTutorial.src.DesignPatterns.Structural.Composite;
-var box = new Box();
-box.Add(new Microphone());
-box.Add(new Mouse());
-Console.WriteLine(box.GetPrice());
+// using DesignPatternsTutorial.src.DesignPatterns.Structural.Composite;
+// var box = new Box();
+// box.Add(new Microphone());
+// box.Add(new Mouse());
+// Console.WriteLine(box.GetPrice());
 
-var box2 = new Box();
-box2.Add(new Microphone());
-box2.Add(new Mouse());
-box2.Add(box);
-Console.WriteLine(box2.GetPrice());
+// var box2 = new Box();
+// box2.Add(new Microphone());
+// box2.Add(new Mouse());
+// box2.Add(box);
+// Console.WriteLine(box2.GetPrice());
+
+
+
+
+
+// ADAPTER PATTERN
+using DesignPatternsTutorial.src.DesignPatterns.Structural.Adapter;
+using DesignPatternsTutorial.src.DesignPatterns.Structural.Adapter.Package;
+var video = new Video();
+var rainbow = new Rainbow();
+var rainbowColor = new RainbowColor(rainbow);
+var videoEditor = new VideoEditor(video);
+videoEditor.ApplyColor(rainbowColor);
