@@ -479,18 +479,46 @@
 
 // cloudData.Save(data);
 // GOOD
-using DesignPatternsTutorial.src.DesignPatterns.Structural.Decorator.Good;
-var url = "http://cloud.com/data";
-var data = "Hello World";
-var compress = true;
-var encrypt = true;
-Data cloudData = new CloudData(url);
-if (encrypt)
-{
-    cloudData = new EncryptionDecorator(cloudData);
-}
-if (compress)
-{
-    cloudData = new CompressionDecorator(cloudData);
-}
-cloudData.Save(data);
+// using DesignPatternsTutorial.src.DesignPatterns.Structural.Decorator.Good;
+// var url = "http://cloud.com/data";
+// var data = "Hello World";
+// var compress = true;
+// var encrypt = true;
+// Data cloudData = new CloudData(url);
+// if (encrypt)
+// {
+//     cloudData = new EncryptionDecorator(cloudData);
+// }
+// if (compress)
+// {
+//     cloudData = new CompressionDecorator(cloudData);
+// }
+// cloudData.Save(data);
+
+
+
+
+
+
+
+
+// CREATIONAL DESIGN PATTERNS
+
+// PROTOTYPE
+using DesignPatternsTutorial.src.DesignPatterns.Creational.Prototype;
+var circle = new Circle();
+circle.Draw();
+// user resizes
+circle.Radius = 10;
+// user duplicates
+var shapeActions = new ShapeActions();
+Shape newCircle = shapeActions.Duplicate(circle);
+newCircle.Draw();
+var rectangle = new Rectangle();
+rectangle.Draw();
+// user resizes
+rectangle.width = 20;
+rectangle.height = 10;
+// user duplicates
+Shape newRectangle = shapeActions.Duplicate(rectangle);
+newRectangle.Draw();
