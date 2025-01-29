@@ -415,11 +415,25 @@
 
 // GOOD
 // now, only the video we want to watch is downloaded
-using DesignPatternsTutorial.src.DesignPatterns.Structural.Proxy.Good;
-var videoList = new VideoList();
-string[] videoIds = new string[] {"1", "2"};
-foreach(var videoId in videoIds)
+// using DesignPatternsTutorial.src.DesignPatterns.Structural.Proxy.Good;
+// var videoList = new VideoList();
+// string[] videoIds = new string[] {"1", "2"};
+// foreach(var videoId in videoIds)
+// {
+//     videoList.AddVideo(new YoutubeVideoProxy(videoId));
+// }
+// videoList.Watch("1");
+
+
+
+
+
+
+// FLYWEIGHT PATTERN
+using DesignPatternsTutorial.src.DesignPatterns.Structural.Flyweight;
+var cropService = new CropService(new CropIconFactory());
+var crops = cropService.GetCrops();
+foreach(var crop in crops)
 {
-    videoList.AddVideo(new YoutubeVideoProxy(videoId));
+    crop.Render();
 }
-videoList.Watch("1");
