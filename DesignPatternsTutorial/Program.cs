@@ -443,8 +443,54 @@
 
 
 //Facade PATTERN
+// using DesignPatternsTutorial.src.DesignPatterns.Structural.Facade;
+// var orderReq = new OrderRequest();
+// var orderService = new OrderService();
+// orderService.Order(orderReq);
 
-using DesignPatternsTutorial.src.DesignPatterns.Structural.Facade;
-var orderReq = new OrderRequest();
-var orderService = new OrderService();
-orderService.Order(orderReq);
+
+
+
+
+
+
+// DECORATOR PATTERN
+// BAD
+// using DesignPatternsTutorial.src.DesignPatterns.Structural.Decorator;
+// var url = "http://cloud.com/data";
+// var data = "Hello World";
+// var compress = true;
+// var encrypt = true;
+
+// var cloudData = new CloudData(url);
+
+// if(compress && encrypt)
+// {
+//     cloudData = new CompressedAndEncryptedData(url);
+// }
+// else if(compress)
+// {
+//     cloudData = new CompressedData(url);
+// }
+// else if(encrypt)
+// {
+//     cloudData = new EncryptedData(url);
+// }
+
+// cloudData.Save(data);
+// GOOD
+using DesignPatternsTutorial.src.DesignPatterns.Structural.Decorator.Good;
+var url = "http://cloud.com/data";
+var data = "Hello World";
+var compress = true;
+var encrypt = true;
+Data cloudData = new CloudData(url);
+if (encrypt)
+{
+    cloudData = new EncryptionDecorator(cloudData);
+}
+if (compress)
+{
+    cloudData = new CompressionDecorator(cloudData);
+}
+cloudData.Save(data);
