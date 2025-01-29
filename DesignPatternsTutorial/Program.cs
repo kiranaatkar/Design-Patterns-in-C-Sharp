@@ -430,10 +430,21 @@
 
 
 // FLYWEIGHT PATTERN
-using DesignPatternsTutorial.src.DesignPatterns.Structural.Flyweight;
-var cropService = new CropService(new CropIconFactory());
-var crops = cropService.GetCrops();
-foreach(var crop in crops)
-{
-    crop.Render();
-}
+// using DesignPatternsTutorial.src.DesignPatterns.Structural.Flyweight;
+// var cropService = new CropService(new CropIconFactory());
+// var crops = cropService.GetCrops();
+// foreach(var crop in crops)
+// {
+//     crop.Render();
+// }
+
+
+
+
+
+//Facade PATTERN
+
+using DesignPatternsTutorial.src.DesignPatterns.Structural.Facade;
+var orderReq = new OrderRequest();
+var orderService = new OrderService();
+orderService.Order(orderReq);
