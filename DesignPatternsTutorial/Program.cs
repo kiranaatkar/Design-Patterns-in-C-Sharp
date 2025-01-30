@@ -505,20 +505,40 @@
 // CREATIONAL DESIGN PATTERNS
 
 // PROTOTYPE
-using DesignPatternsTutorial.src.DesignPatterns.Creational.Prototype;
-var circle = new Circle();
-circle.Draw();
-// user resizes
-circle.Radius = 10;
-// user duplicates
-var shapeActions = new ShapeActions();
-Shape newCircle = shapeActions.Duplicate(circle);
-newCircle.Draw();
-var rectangle = new Rectangle();
-rectangle.Draw();
-// user resizes
-rectangle.width = 20;
-rectangle.height = 10;
-// user duplicates
-Shape newRectangle = shapeActions.Duplicate(rectangle);
-newRectangle.Draw();
+// using DesignPatternsTutorial.src.DesignPatterns.Creational.Prototype;
+// var circle = new Circle();
+// circle.Draw();
+// // user resizes
+// circle.Radius = 10;
+// // user duplicates
+// var shapeActions = new ShapeActions();
+// Shape newCircle = shapeActions.Duplicate(circle);
+// newCircle.Draw();
+// var rectangle = new Rectangle();
+// rectangle.Draw();
+// // user resizes
+// rectangle.width = 20;
+// rectangle.height = 10;
+// // user duplicates
+// Shape newRectangle = shapeActions.Duplicate(rectangle);
+// newRectangle.Draw();
+
+
+
+
+
+// SINGLETON
+// BAD - creates a new instance each time, so each client which uses it wont have the new settings
+// using DesignPatternsTutorial.src.DesignPatterns.Creational.Singleton;
+// var appSettings = new AppSettings();
+// appSettings.Set("theme", "dark");
+// appSettings.Set("font", "arial");
+// Console.WriteLine(appSettings.Get("theme"));
+// Test.Run();
+// GOOD
+using DesignPatternsTutorial.src.DesignPatterns.Creational.Singleton.Good;
+var appSettings = AppSettings.GetInstance();
+appSettings.Set("theme", "dark");
+appSettings.Set("font", "arial");
+Console.WriteLine(appSettings.Get("theme"));
+Test.Run();
