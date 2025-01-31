@@ -632,26 +632,40 @@
 // GOOD
 using DesignPatternsTutorial.src.DesignPatterns.Creational.Builder.Good;
 using DesignPatternsTutorial.src.DesignPatterns.Creational.Builder.Components;
-var carBuilder = new CarBuilder();
-carBuilder.SetCarType(CarType.Sports)
-    .SetNumberOfSeats(2)
-    .SetEngine(new Engine())
-    .IsConvertible(true)
-    .SetDashboard(new Dashboard(hasRevCounter: true))
-    .SetWheels(new Wheels(20))
-    .SetGPSNavigator(new GPSNavigator());
+// var carBuilder = new CarBuilder();
+// carBuilder.SetCarType(CarType.Sports)
+//     .SetNumberOfSeats(2)
+//     .SetEngine(new Engine())
+//     .IsConvertible(true)
+//     .SetDashboard(new Dashboard(hasRevCounter: true))
+//     .SetWheels(new Wheels(20))
+//     .SetGPSNavigator(new GPSNavigator());
 
+// var sportsCar = carBuilder.GetCar();
+// sportsCar.Fuel = 100;
+
+// var manualBuilder = new ManualBuilder();
+// manualBuilder.SetCarType(CarType.Sports)
+//     .SetNumberOfSeats(2)
+//     .SetEngine(new Engine())
+//     .IsConvertible(true)
+//     .SetDashboard(new Dashboard(hasRevCounter: true))
+//     .SetWheels(new Wheels(20))
+//     .SetGPSNavigator(new GPSNavigator());
+
+// var sportsCarManual = manualBuilder.GetCar();
+// Console.WriteLine(sportsCarManual.Print());
+
+
+// Or, with a director to clean up client code
+var carBuilder = new CarBuilder();
+var Director = new Director();
+
+Director.ConstructSportsCar(carBuilder);
 var sportsCar = carBuilder.GetCar();
 sportsCar.Fuel = 100;
 
 var manualBuilder = new ManualBuilder();
-manualBuilder.SetCarType(CarType.Sports)
-    .SetNumberOfSeats(2)
-    .SetEngine(new Engine())
-    .IsConvertible(true)
-    .SetDashboard(new Dashboard(hasRevCounter: true))
-    .SetWheels(new Wheels(20))
-    .SetGPSNavigator(new GPSNavigator());
-
+Director.ConstructSportsCar(manualBuilder);
 var sportsCarManual = manualBuilder.GetCar();
 Console.WriteLine(sportsCarManual.Print());
