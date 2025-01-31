@@ -550,25 +550,108 @@
 
 
 // ABSTRACT AbstractFactory
-using DesignPatternsTutorial.src.DesignPatterns.Creational.AbstractFactory;
+//using DesignPatternsTutorial.src.DesignPatterns.Creational.AbstractFactory;
 // var os = OperatingSystemType.Windows;
 // var userSettingsForm = new UserSettingsForm();
 // userSettingsForm.Render(os);
 
-var os = OperatingSystemType.Mac;
-IUIComponentFactory uiComponentFactory;
+// var os = OperatingSystemType.Mac;
+// IUIComponentFactory uiComponentFactory;
 
-if (os == OperatingSystemType.Windows)
-{
-    uiComponentFactory = new WindowsComponentFactory();
-}
-else if (os == OperatingSystemType.Mac)
-{
-    uiComponentFactory = new MacComponentFactory();
-}
-else 
-{
-    throw new Exception("Unknown operating system");
-}
+// if (os == OperatingSystemType.Windows)
+// {
+//     uiComponentFactory = new WindowsComponentFactory();
+// }
+// else if (os == OperatingSystemType.Mac)
+// {
+//     uiComponentFactory = new MacComponentFactory();
+// }
+// else 
+// {
+//     throw new Exception("Unknown operating system");
+// }
 
-new UserSettingsForm().Render(uiComponentFactory);
+// new UserSettingsForm().Render(uiComponentFactory);
+
+
+
+
+// Builder Pattern
+// BAD
+// using DesignPatternsTutorial.src.DesignPatterns.Creational.Builder.Bad;
+// using DesignPatternsTutorial.src.DesignPatterns.Creational.Builder.Components;
+// var sportsCar = new Car(
+//     CarType.Sports, 
+//     2, 
+//     new Engine(), 
+//     true, 
+//     new Dashboard(hasRevCounter: true), 
+//     new Wheels(20), 
+//     new GPSNavigator()
+// );
+
+// sportsCar.Fuel = 100;
+
+// var suvCar = new Car(
+//     CarType.SUV, 
+//     4, 
+//     new Engine(), 
+//     false, 
+//     new Dashboard(hasRevCounter: false), 
+//     new Wheels(22), 
+//     new GPSNavigator()
+// );
+// suvCar.Fuel = 40;
+
+// var sportsCarManual = new Manual(
+//     CarType.Sports, 
+//     2, 
+//     new Engine(), 
+//     true, 
+//     new Dashboard(hasRevCounter: true), 
+//     new Wheels(20), 
+//     new GPSNavigator()
+// );
+// Console.WriteLine(sportsCarManual.Print());
+
+// var suvCarManual = new Manual(
+//     CarType.SUV, 
+//     4, 
+//     new Engine(), 
+//     false, 
+//     new Dashboard(hasRevCounter: false), 
+//     new Wheels(22), 
+//     new GPSNavigator()
+// );
+// Console.WriteLine(suvCarManual.Print());
+
+// // lots of configuration options we have to provide every time we create a car
+// // lots of common info shared between manual and non-manual versions
+
+
+// GOOD
+using DesignPatternsTutorial.src.DesignPatterns.Creational.Builder.Good;
+using DesignPatternsTutorial.src.DesignPatterns.Creational.Builder.Components;
+var carBuilder = new CarBuilder();
+carBuilder.SetCarType(CarType.Sports)
+    .SetNumberOfSeats(2)
+    .SetEngine(new Engine())
+    .IsConvertible(true)
+    .SetDashboard(new Dashboard(hasRevCounter: true))
+    .SetWheels(new Wheels(20))
+    .SetGPSNavigator(new GPSNavigator());
+
+var sportsCar = carBuilder.GetCar();
+sportsCar.Fuel = 100;
+
+var manualBuilder = new ManualBuilder();
+manualBuilder.SetCarType(CarType.Sports)
+    .SetNumberOfSeats(2)
+    .SetEngine(new Engine())
+    .IsConvertible(true)
+    .SetDashboard(new Dashboard(hasRevCounter: true))
+    .SetWheels(new Wheels(20))
+    .SetGPSNavigator(new GPSNavigator());
+
+var sportsCarManual = manualBuilder.GetCar();
+Console.WriteLine(sportsCarManual.Print());
