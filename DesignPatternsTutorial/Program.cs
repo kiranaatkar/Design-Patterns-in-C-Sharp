@@ -536,9 +536,39 @@
 // Console.WriteLine(appSettings.Get("theme"));
 // Test.Run();
 // GOOD
-using DesignPatternsTutorial.src.DesignPatterns.Creational.Singleton.Good;
-var appSettings = AppSettings.GetInstance();
-appSettings.Set("theme", "dark");
-appSettings.Set("font", "arial");
-Console.WriteLine(appSettings.Get("theme"));
-Test.Run();
+// using DesignPatternsTutorial.src.DesignPatterns.Creational.Singleton.Good;
+// var appSettings = AppSettings.GetInstance();
+// appSettings.Set("theme", "dark");
+// appSettings.Set("font", "arial");
+// Console.WriteLine(appSettings.Get("theme"));
+// Test.Run();
+
+
+
+
+
+
+
+// ABSTRACT AbstractFactory
+using DesignPatternsTutorial.src.DesignPatterns.Creational.AbstractFactory;
+// var os = OperatingSystemType.Windows;
+// var userSettingsForm = new UserSettingsForm();
+// userSettingsForm.Render(os);
+
+var os = OperatingSystemType.Mac;
+IUIComponentFactory uiComponentFactory;
+
+if (os == OperatingSystemType.Windows)
+{
+    uiComponentFactory = new WindowsComponentFactory();
+}
+else if (os == OperatingSystemType.Mac)
+{
+    uiComponentFactory = new MacComponentFactory();
+}
+else 
+{
+    throw new Exception("Unknown operating system");
+}
+
+new UserSettingsForm().Render(uiComponentFactory);
